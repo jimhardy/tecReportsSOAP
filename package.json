@@ -1,0 +1,25 @@
+{
+  "name": "tecreportssoap",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jimhardy/tecReportsSOAP.git"
+  },
+  "author": "Jim Hardy",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jimhardy/tecReportsSOAP/issues"
+  },
+  "homepage": "https://github.com/jimhardy/tecReportsSOAP#readme",
+  "dependencies": {
+    "hapi": "^18.1.0",
+    "soap": "^0.26.0",
+    "soap-as-promised": "^1.26.0",
+    "xml": "^1.0.1"
+  }
+}
