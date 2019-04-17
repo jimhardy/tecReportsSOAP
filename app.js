@@ -17,11 +17,17 @@ const init = async () => {
   server.route({
     method: "POST",
     path: "/",
-    handler: (req, h) => {
+    handler: async (req, h) => {
       //  console.log(req.payload);
-      let jsData = convert.xml2js(req.payload, { compact: true, spaces: 2 });
+      const jsData = convert.xml2js(req.payload, { compact: true, spaces: 2 });
       //  console.log( jsData);
-      instructTec(jsData);
+      try {
+        const callResponse = await instructTec(jsData);
+        console.log('call response: ', callResponse);
+        
+      } catch (error) {
+        console.log(error);
+      }
       return null;
     }
   });
@@ -31,19 +37,20 @@ const init = async () => {
   console.log("Server running on ", server.info.uri);
 };
 
-let instructTec = async data => {
+const instructTec = async data => {
   const tecUrl = "https://cfws.tecreports.co.uk/CFWSInstruct.asmx?WSDL";
   try {
     const soapClient = await soap.createClient(tecUrl, {
       disabledCache: true
     });
 
-    await soapClient.InvokeInstructRead({
+    const instruct = await soapClient.InvokeInstructRead({
       SESSIONCODE: "?",
       ERRCODE: 0,
       ERRMSG: "?",
       objInstruct: data
     });
+    return instruct;
   } catch (Err) {
     console.log("FAILED:");
     console.log(Err);
