@@ -18,17 +18,18 @@ const init = async () => {
     method: "POST",
     path: "/",
     handler: async (req, h) => {
-      //  console.log(req.payload);
       const jsData = convert.xml2js(req.payload, { compact: true, spaces: 2 });
-      //  console.log( jsData);
+      let callResponse;
       try {
-        const callResponse = await instructTec(jsData);
+        callResponse = await instructTec(jsData);
         console.log('call response: ', callResponse);
         
       } catch (error) {
         console.log(error);
       }
-      return null;
+      callResponse = convert.js2xml(callResponse , {compact: true, spaces: 2});
+      return callResponse;
+      // return xmlResponse;
     }
   });
 
@@ -45,9 +46,9 @@ const instructTec = async data => {
     });
 
     const instruct = await soapClient.InvokeInstructRead({
-      SESSIONCODE: "?",
-      ERRCODE: 0,
-      ERRMSG: "?",
+      // SESSIONCODE: "?",
+      // ERRCODE: 0,
+      // ERRMSG: "?",
       objInstruct: data
     });
     return instruct;
