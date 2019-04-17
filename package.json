@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/jimhardy/tecReportsSOAP#readme",
   "dependencies": {
+    "body-parser": "^1.18.3",
     "hapi": "^18.1.0",
     "soap": "^0.26.0",
     "soap-as-promised": "^1.26.0",

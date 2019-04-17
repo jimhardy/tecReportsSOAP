@@ -1,22 +1,23 @@
 "use strict";
 
-const Hapi = require("hapi"),
+const hapi = require("hapi"),
   soap = require("soap-as-promised"),
-  xml = require("xml");
+  xml = require("xml"), 
+  bodyParser = require('body-parser')
 
 // server config
 const init = async () => {
-  const server = Hapi.server({
+  const server = hapi.server({
     port: 3000,
     host: "localhost"
   });
 
   // routes
   server.route({
-    method: "GET",
+    method: "POST",
     path: "/",
     handler: (req, h) => {
-      return instructTec(req);
+      return instructTec(req.body);
     }
   });
 
@@ -24,8 +25,6 @@ const init = async () => {
   await server.start();
   console.log("Server running on %ss", server.info.uri);
 };
-
-
 let instructTec = async data => {
   const tecUrl = "https://cfws.tecreports.co.uk/CFWSInstruct.asmx?WSDL";
   try {
@@ -34,7 +33,10 @@ let instructTec = async data => {
     });
 
     await soapClient.InvokeInstructRead({
-      objInstruct: data
+      SESSIONCODE: "?",
+      ERRCODE: 0,
+      ERRMSG: "?",
+      Instruct: data
     });
   } catch (Err) {
     console.log("FAILED:");
