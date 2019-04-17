@@ -2,8 +2,9 @@
 
 const hapi = require("hapi"),
   soap = require("soap-as-promised"),
-  xml = require("xml"), 
-  bodyParser = require('body-parser')
+  xml = require("xml"),
+  bodyParser = require("body-parser"),
+  convert = require("xml-js");
 
 // server config
 const init = async () => {
@@ -17,14 +18,19 @@ const init = async () => {
     method: "POST",
     path: "/",
     handler: (req, h) => {
-      return instructTec(req.body);
+      //  console.log(req.payload);
+      let jsData = convert.xml2js(req.payload, { compact: true, spaces: 2 });
+      //  console.log( jsData);
+      instructTec(jsData);
+      return null;
     }
   });
 
   // message on server start
   await server.start();
-  console.log("Server running on %ss", server.info.uri);
+  console.log("Server running on ", server.info.uri);
 };
+
 let instructTec = async data => {
   const tecUrl = "https://cfws.tecreports.co.uk/CFWSInstruct.asmx?WSDL";
   try {
@@ -36,7 +42,7 @@ let instructTec = async data => {
       SESSIONCODE: "?",
       ERRCODE: 0,
       ERRMSG: "?",
-      Instruct: data
+      objInstruct: data
     });
   } catch (Err) {
     console.log("FAILED:");

@@ -18,9 +18,11 @@
   "homepage": "https://github.com/jimhardy/tecReportsSOAP#readme",
   "dependencies": {
     "body-parser": "^1.18.3",
+    "eslint-config-rallycoding": "^3.2.0",
     "hapi": "^18.1.0",
     "soap": "^0.26.0",
     "soap-as-promised": "^1.26.0",
-    "xml": "^1.0.1"
+    "xml": "^1.0.1",
+    "xml-js": "^1.6.11"
   }
 }
