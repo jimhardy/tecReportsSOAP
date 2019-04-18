@@ -1,0 +1,39 @@
+<?xml version="1.0" ?>
+    <objInstruct>
+        <ID><ID/>
+        <USER><USER/>
+        <COMPANY>Action 365 Ltd - Pukka</COMPANY>
+        <SUBCOMPANY>M Proclaim Case Type.Text</SUBCOMPANY>
+        <INSPECTIONTYPE>Inspection Type.Description</INSPECTIONTYPE>
+        <POLICYCLAIMREF>case.key</POLICYCLAIMREF>
+        <DATEOFLOSS>Tec Format Accident Date.Text</DATEOFLOSS>
+        <ISVEHICLEMOBILE>CL Vehicle Driveable.Description</ISVEHICLEMOBILE>
+        <VATREG>CL VAT Registered.Description</VATREG>
+        <EXCESS>Excess.Value</EXCESS>
+        <MAKE>CL vehicle make.Text</MAKE>
+        <MODEL>CL vehicle model.Text</MODEL>
+        <YEAR>Vehicle Year Registered.Text</YEAR>
+        <CANWEAUTHORISEREPAIRS/>
+        <ABLETOMOVETOSALVAGE/>
+        <ABLETOAGREESETTLEMENT/>
+        <LABOURRATE/>
+        <LABOURESTIMATE/>
+        <PARTSESTIMATE/>
+        <PAINTMATERIALESTIMATE/>
+        <CLIENTOWNREPAIRER>Client Using Own Garage OUTPUT Boolean.Text</CLIENTOWNREPAIRER>
+        <CLAIMANT_POSTCODE>Client.Postcode</CLAIMANT_POSTCODE>
+        <CLAIMANT_TYPE>Claim Type.Description</CLAIMANT_TYPE>
+        <CLAIMANT_NAME>Client.Full Name/Company Name</CLAIMANT_NAME>
+        <CLAIMANT_ADDRESS1>Client.Address Line 1</CLAIMANT_ADDRESS1>
+        <CLAIMANT_ADDRESS2>Client.Address Line 2</CLAIMANT_ADDRESS2>
+        <CLAIMANT_TOWN>Client.Address Line 3</CLAIMANT_TOWN>
+        <CLAIMANT_TELEPHONE>Client.Tel Main</CLAIMANT_TELEPHONE>
+        <CLAIMANT_MOBILE>Client.Tel Home</CLAIMANT_MOBILE>
+        <LOCATION_POSTCODE>CRN - Client Vehicle Address Postcode.Text</LOCATION_POSTCODE>
+        <LOCATION_NAME>CL Vehicle Location.Description</LOCATION_NAME>
+        <LOCATION_ADDRESS1>CRN - Client Vehicle Address Line 1.Text</LOCATION_ADDRESS1>
+        <LOCATION_ADDRESS2>CRN - Client Vehicle Address Line 2.Text</LOCATION_ADDRESS2>
+        <LOCATION_TOWN>CRN - Client Vehicle Address City.Text</LOCATION_TOWN>
+        <LOCATION_TELEPHONE>CRN - Client Vehicle Address Tel.Text</LOCATION_TELEPHONE>
+        <SPECIALNOTES>Engineer Notes.Text</SPECIALNOTES>
+    </objInstruct>

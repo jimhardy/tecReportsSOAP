@@ -22,12 +22,11 @@ const init = async () => {
       let callResponse;
       try {
         callResponse = await instructTec(jsData);
-        console.log('call response: ', callResponse);
-        
+        console.log("call response: ", callResponse);
       } catch (error) {
         console.log(error);
       }
-      callResponse = convert.js2xml(callResponse , {compact: true, spaces: 2});
+      callResponse = convert.js2xml(callResponse, { compact: true, spaces: 2 });
       return callResponse;
       // return xmlResponse;
     }
@@ -46,9 +45,6 @@ const instructTec = async data => {
     });
 
     const instruct = await soapClient.InvokeInstructRead({
-      // SESSIONCODE: "?",
-      // ERRCODE: 0,
-      // ERRMSG: "?",
       objInstruct: data
     });
     return instruct;
