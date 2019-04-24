@@ -6,6 +6,9 @@ const soap = require('soap-as-promised');
   // const bodyParser = require('body-parser');
 const convert = require('xml-js');
 
+const tecUrl = require('./handlers/tecUrl');
+
+
 // server config
 const init = async () => {
   const server = hapi.server({
@@ -38,7 +41,7 @@ const init = async () => {
 };
 
 const instructTec = async data => {
-  const tecUrl = 'https://cfws.tecreports.co.uk/CFWSInstruct.asmx?WSDL';
+  // 
   try {
     const soapClient = await soap.createClient(tecUrl, {
       disabledCache: true
