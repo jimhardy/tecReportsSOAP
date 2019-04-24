@@ -1,11 +1,10 @@
 // const xmlDataConvert = require('../modules/xmlDataConvert');
 const instructTec = require('../modules/instructTec');
-  
-  // routes
-  const postRoute = server.route({
+const xmlDataConvert = require('../modules/xmlDataConvert');
+
+
+module.exports = {
     method: 'POST',
     path: '/',
-    handler: instructTec(req.payload)
-  });
-
-  module.exports = postRoute;
+    handler: instructTec(xmlDataConvert.xmlToJs(payload))
+  };

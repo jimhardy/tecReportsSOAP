@@ -9,11 +9,15 @@ const init = async () => {
     port: 3000,
     host: 'localhost'
   });
+  
+  // Post Route
+  server.route(postToTecReports);
 
   // message on server start
   await server.start();
   console.log('Server running on ', server.info.uri);
 };
+
 
 // start hapi server
 process.on('unhandledRejection', err => {

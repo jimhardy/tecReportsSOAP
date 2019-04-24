@@ -2,8 +2,8 @@ const soap = require('soap-as-promised');
 const tecUrl = require('../handlers/tecURL');
 const xmlDataConvert = require('./xmlDataConvert');
 
+// xmlDataConvert.xmlToJs(req.payload);
 
-let jsData = xmlDataConvert.xmlToJs(req.payload);
 const instructTec = async (jsData) => {
     try {
       const soapClient = await soap.createClient(tecUrl, {
@@ -14,7 +14,6 @@ const instructTec = async (jsData) => {
       });
       const response = xmlDataConvert.xmlToJs(instruct);
       return response;
-
     } catch (Err) {
       console.log('FAILED:');
       console.log(Err);
