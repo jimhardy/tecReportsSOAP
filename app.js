@@ -7,6 +7,7 @@ const soap = require('soap-as-promised');
 const convert = require('xml-js');
 
 const tecUrl = require('./handlers/tecUrl');
+const postRoute = require('./routes/postRoute');
 
 
 // server config
@@ -16,46 +17,49 @@ const init = async () => {
     host: 'localhost'
   });
 
-  // routes
-  server.route({
-    method: 'POST',
-    path: '/',
-    handler: async (req) => {
-      const jsData = convert.xml2js(req.payload, { compact: true, spaces: 2 });
-      let callResponse;
-      try {
-        callResponse = await instructTec(jsData);
-        console.log('call response: ', callResponse);
-      } catch (error) {
-        console.log(error);
-      }
-      callResponse = convert.js2xml(callResponse, { compact: true, spaces: 2 });
-      return callResponse;
-      // return xmlResponse;
-    }
-  });
+
+  // // routes
+
+  server.route(postRoute);
+
+  // server.route({
+  //   method: 'POST',
+  //   path: '/',
+  //   handler: async (req) => {
+  //     const jsData = convert.xml2js(req.payload, { compact: true, spaces: 2 });
+  //     let callResponse;
+  //     try {
+  //       callResponse = await instructTec(jsData);
+  //       console.log('call response: ', callResponse);
+  //     } catch (error) {
+  //       console.log(error);
+  //     }
+  //     callResponse = convert.js2xml(callResponse, { compact: true, spaces: 2 });
+  //     return callResponse;
+  //     // return xmlResponse;
+  //   }
+  // });
 
   // message on server start
   await server.start();
   console.log('Server running on ', server.info.uri);
 };
 
-const instructTec = async data => {
-  // 
-  try {
-    const soapClient = await soap.createClient(tecUrl, {
-      disabledCache: true
-    });
+// const instructTec = async data => {
+//   try {
+//     const soapClient = await soap.createClient(tecUrl, {
+//       disabledCache: true
+//     });
 
-    const instruct = await soapClient.InvokeInstructRead({
-      objInstruct: data
-    });
-    return instruct;
-  } catch (Err) {
-    console.log('FAILED:');
-    console.log(Err);
-  }
-};
+//     const instruct = await soapClient.InvokeInstructRead({
+//       objInstruct: data
+//     });
+//     return instruct;
+//   } catch (Err) {
+//     console.log('FAILED:');
+//     console.log(Err);
+//   }
+// };
 
 // start hapi server
 process.on('unhandledRejection', err => {
