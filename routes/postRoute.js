@@ -15,6 +15,5 @@ module.exports = {
           }
           callResponse = convert.js2xml(callResponse, { compact: true, spaces: 2 });
           return callResponse;
-          // return xmlResponse;
         }
 };
