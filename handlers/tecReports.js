@@ -18,7 +18,7 @@ const instruct = async (req, h) => {
 
     console.log('call response: ', result);
 
-    const callResponse = convert.js2xml(callResponse, {
+    const callResponse = convert.js2xml(result, {
       compact: true,
       spaces: 2
     });
@@ -31,38 +31,6 @@ const instruct = async (req, h) => {
     return Boom.badRequest(err);
   }
 };
-
-// {
-//
-//
-//     const jsData = convert.xml2js(req.payload, { compact: true, spaces: 2 });
-//     let callResponse;
-//     try {
-//       callResponse = await instructTec(jsData);
-//       console.log('call response: ', callResponse);
-//     } catch (error) {
-//       console.log(error);
-//     }
-//     callResponse = convert.js2xml(callResponse, { compact: true, spaces: 2 });
-//     return callResponse;
-//   }
-// }
-
-// const instruct = async data => {
-//   try {
-//     const soapClient = await soap.createClient(tecUrl, {
-//       disabledCache: true
-//     });
-
-//     const result = await soapClient.InvokeInstructRead({
-//       objInstruct: data
-//     });
-//     return result;
-//   } catch (Err) {
-//     console.log('FAILED:');
-//     console.log(Err);
-//   }
-// };
 
 module.exports = {
   instruct
