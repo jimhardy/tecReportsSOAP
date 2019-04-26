@@ -1,17 +1,17 @@
-'use strict';
-
 const hapi = require('hapi');
-const postRoute = require('./routes/postRoute');
+const routes = require('./routes');
+
+require('dotenv').config();
 
 // server config
 const init = async () => {
   const server = hapi.server({
-    port: 3000,
-    host: 'localhost'
+    port: process.env.PORT,
+    host: process.env.HOST
   });
 
- // routes
-  server.route(postRoute);
+  // routes
+  server.route(routes);
 
   // message on server start
   await server.start();
